@@ -17,8 +17,9 @@ app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=True,a
 @app.on_event('startup')
 def startup():
     init_db()
-    from .seed import seed
-    seed()
+    if os.getenv('SEED_DEMO_DATA','false').lower() in ('1','true','yes'):
+        from .seed import seed
+        seed()
 @app.get('/health')
 def health(): return {'status':'ok','service':'jansetu-api'}
 class Register(BaseModel): name:str=Field(min_length=2,max_length=120); email:EmailStr; password:str=Field(min_length=10); phone:str=''; city:str=''; state:str=''; language:str='en'

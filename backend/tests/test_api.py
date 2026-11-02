@@ -1,3 +1,5 @@
+import os
+os.environ['SEED_DEMO_DATA']='true'
 from fastapi.testclient import TestClient
 import pytest
 from app.main import app
