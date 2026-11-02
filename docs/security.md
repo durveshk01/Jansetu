@@ -1,0 +1,3 @@
+# Security notes
+
+Passwords are bcrypt-hashed and APIs use expiring signed bearer tokens. Citizen reads are scoped to the owner's rows; department users are scoped to their assigned department; administrative routes require explicit roles. Attachments have private server paths, type/size validation and UUID filenames. Configure a unique strong secret, HTTPS, rate limits, backup/retention rules and a private object store for shared deployment. Password reset, email verification, refresh/revocation, CSRF cookies, account throttling, comprehensive audit logging and formal privacy review are not implemented.

@@ -1,0 +1,5 @@
+import './globals.css';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+export const metadata:Metadata={title:'JanSetu | Citizen Services',description:'Connecting Citizens. Empowering Governance. Building Smarter Cities.'};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><header className="topbar"><div className="shell nav"><Link className="brand" href="/"><span className="brandmark">J</span>JanSetu</Link><nav className="links"><Link href="/services">Services</Link><Link href="/schemes">Schemes</Link><Link href="/citizen/report-issue">Report issue</Link><Link href="/admin">Administration</Link><Link className="btn secondary" href="/login">Sign in</Link></nav></div></header>{children}<footer className="footer"><div className="shell"><strong>JanSetu</strong><p>Connecting citizens with responsive, transparent civic services.</p><small>Educational demonstration platform · Fictional sample data · Not an official government website</small></div></footer></body></html>}

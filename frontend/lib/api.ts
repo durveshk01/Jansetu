@@ -1,0 +1,3 @@
+export const API=process.env.NEXT_PUBLIC_API_URL||'http://localhost:8000';
+export function auth(){if(typeof window==='undefined')return{};const t=localStorage.getItem('jansetu_token');return t?{Authorization:`Bearer ${t}`}:{}}
+export async function request(path:string,options:RequestInit={}){const headers=new Headers(options.headers);if(!headers.has('Content-Type')&&!(options.body instanceof FormData))headers.set('Content-Type','application/json');for(const [key,value] of Object.entries(auth()))headers.set(key,value);const r=await fetch(API+path,{...options,headers,cache:'no-store'});if(!r.ok)throw new Error((await r.json().catch(()=>({detail:r.statusText}))).detail||'Request failed');return r.json()}
